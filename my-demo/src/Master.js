@@ -1,9 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { Container, Row, Col, Card, CardBody, FormGroup, Input, Label } from "reactstrap";
 
-function Master() {
+function Master(props) {
   return (
       <Container className="App">
         <Row className="justify-content-center">
@@ -20,7 +19,7 @@ function Master() {
                                 </div>
                                 <form className="user">
                                     <FormGroup>
-                                        <Input type="email" className="form-control form-control-user" id="userInputEmail" placeholder="Enter Email Address..."/>
+                                        <Input type="email" className="form-control form-control-user" id="userInputEmail" placeholder={props.hola}/>
                                     </FormGroup>
                                     <FormGroup>
                                         <Input type="password" className="form-control form-control-user" id="userInputPassword" placeholder="Password"/>
@@ -28,6 +27,7 @@ function Master() {
 
                                     <FormGroup>
                                         <div className="custom-control custom-checkbox small">
+                                        
                                             <Input type="checkbox" className="custom-control-input" id="customCheck" />
                                             <Label className="custom-control-label" for="customCheck">Remember me</Label>
                                          </div>

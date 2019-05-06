@@ -5,7 +5,7 @@ import App from './App';
 import Master from './Master';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<Master />, document.getElementById('root'));
+ReactDOM.render(<Master hola="Enter you email" />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
