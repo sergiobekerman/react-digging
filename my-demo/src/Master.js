@@ -4,14 +4,39 @@ import { Container, Row, Col, Card, CardBody, FormGroup, Input, Label } from "re
 import FacebookLogin from 'react-facebook-login'
 import GoogleLogin from 'react-google-login';
 
+const authProviderType = {
+    none: 'none',
+    google: 'google',
+    facebook: 'facebook',
+    internal: 'internal',
+  }
+
 class Master extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            authProvider: authProviderType.none,
+            userDetails: null,
+        };
     }
+
     render() {
         const responseFacebook = (response) => {
             console.log(response);
+            this.setState({
+                authProvider: authProviderType.facebook,
+                userDetails:{
+                    email: response.email,
+                    name: response.name,
+                    token: response.accessToken,
+                }
+            });
           }
+
+          let userMessage = '';
+        if (this.state.authProvider == authProviderType.facebook) {
+            userMessage = <h1 className="h4 text-gray-900 mb-4"> This is facebook </h1>
+        } 
       
           const responseGoogle = (response) => {
             console.log(response);
@@ -29,6 +54,7 @@ class Master extends Component {
                                     <div className="p-5">
                                         <div className="text-center">
                                             <h1 className="h4 text-gray-900 mb-4">Please login</h1>
+                                            {userMessage}
                                         </div>
                                         <form className="user">
                                             <FormGroup>
