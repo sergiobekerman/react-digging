@@ -3,9 +3,27 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import Master from './Master';
+import Notfound from './NotFound'
+import Empty from './Empty'
 import * as serviceWorker from './serviceWorker';
+import { Route, Link, BrowserRouter, Switch } from 'react-router-dom'
 
-ReactDOM.render(<Master hola="Enter you email" />, document.getElementById('root'));
+
+const routing = (
+    <BrowserRouter>
+      <div>
+      <Switch>
+        <Route exact path="/" component={Master} />
+        <Route path="/app" component={App} />
+        <Route path="/empty" component={Empty} />
+        <Route path component={Notfound} />
+      </Switch>
+      </div>
+    </BrowserRouter>
+  )
+
+ReactDOM.render(routing, document.getElementById('root'));
+// ReactDOM.render(<Master hola="Enter you email" />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
